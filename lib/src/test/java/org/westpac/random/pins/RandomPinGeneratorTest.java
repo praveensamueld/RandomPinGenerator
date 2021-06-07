@@ -38,4 +38,44 @@ public class RandomPinGeneratorTest {
             assertThat(pins).isLessThanOrEqualTo(9999);
         });
     }
+
+    @Test
+    public void generatedBatchOfRandomPinsThrowsExceptionWhenMinValueProvidedIsLessThanZero() {
+        assertThatThrownBy(() -> {
+            assertThat(randomPinGeneration.generateBatchOfUniqueRandomPins(-1, 10, 10));
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Parameters 'minVal' and 'maxVal' should be non-negative integers and 'maxVal' should be greater than 'minVal'.");
+    }
+
+    @Test
+    public void generatedBatchOfRandomPinsThrowsExceptionWhenMaxValueProvidedIsLessThanZero() {
+        assertThatThrownBy(() -> {
+            assertThat(randomPinGeneration.generateBatchOfUniqueRandomPins(10, -1, 10));
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Parameters 'minVal' and 'maxVal' should be non-negative integers and 'maxVal' should be greater than 'minVal'.");
+    }
+
+    @Test
+    public void generatedBatchOfRandomPinsThrowsExceptionWhenMinValueIsGreaterThanMaxValue() {
+        assertThatThrownBy(() -> {
+            assertThat(randomPinGeneration.generateBatchOfUniqueRandomPins(10, 9, 10));
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Parameters 'minVal' and 'maxVal' should be non-negative integers and 'maxVal' should be greater than 'minVal'.");
+    }
+
+    @Test
+    public void generatedBatchOfRandomPinsThrowsExceptionWhenNoOfPinsIsLessThanOne() {
+        assertThatThrownBy(() -> {
+            assertThat(randomPinGeneration.generateBatchOfUniqueRandomPins(10, 11, 0));
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Parameter 'noOfPins' should be greater than 0.");
+    }
+
+    @Test
+    public void generatedBatchOfRandomPinsThrowsExceptionWhenNoOfPinsIsGreatedThanTheProbablyNumberOfPinsWhichCanBeGeneratedBetweenTheSuppliedMinValAndMaxVal() {
+        assertThatThrownBy(() -> {
+            assertThat(randomPinGeneration.generateBatchOfUniqueRandomPins(0, 1, 2));
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("The requested 'noOfPins' cannot be greater than probable number of unique pins which can be generated between the supplied 'minVal' and 'maxVal'");
+    }
 }
