@@ -15,3 +15,37 @@ git clone https://github.com/davidmerfield/randomColor.git
 4. **cd** into the parent directory.
 ```$xslt
 cd RandomPinGenerator
+```
+
+## Building the project
+### Linux/macOS
+1. From the parent directory of the cloned repository, run the below command in Terminal.
+```$xslt
+./gradlew build
+```
+
+### Windows
+1. From the parent directory of the cloned repository, run the below command in CMD.
+```$xslt
+gradlew.bat build
+```
+
+> Note that you don't need to install gradle on your machine. The first time you run the wrapper script, gradlew, there may be a delay while that version of gradle is downloaded and stored locally in your ~/.gradle/wrapper/dists folder.
+
+> The first time you run the build, Gradle will check whether you already have the required dependencies in your cache under your ~/.gradle directory. If not, the libraries will be downloaded and stored there. The next time you run the build, the cached versions will be used. 
+
+**The gradlew build command performs the below tasks:**
+1. Compiles the classes.
+2. Generates the jar or library file.
+3. Generates the javadoc.
+4. Runs the unit tests and generates a test report.
+
+### Build Artifacts
+#### Accessing the jar/library
+You can find your newly packaged JAR file in the **lib/build/libs** directory with the name **lib-0.1.0.jar**.
+
+#### Accessing the javadoc
+You can view the generated javadoc files by opening the HTML file located at **lib/build/docs/javadoc/index.html**.
+
+#### Accessing the unit test results
+You can view the test report by opening the HTML output file, located at **lib/build/reports/tests/test/index.html**.
