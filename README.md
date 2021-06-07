@@ -5,6 +5,34 @@ A java library for generating a batch of unique random PINs.
 1. A Linux/macOS/Windows machine running Java 8 or above. For detailed installation instructions please [click here](https://java.com/en/download/help/download_options.html). 
 2. Install **git**. For detailed installation instructions please [click here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 3. An **IDE** - [Intellij IDEA](https://www.jetbrains.com/idea/) or [Eclipse](https://www.eclipse.org/downloads/).
+
+## Project structure
+
+1. This Java library project was generated using *gradle init* task.
+2. This project uses **testNG** for unit testing and **AssertJ** to leverage the rich set of assertions to improve code readability. 
+
+```$xslt
+├── gradle 
+│   └── wrapper
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+├── gradlew 
+├── gradlew.bat 
+├── settings.gradle 
+└── lib
+    ├── build.gradle 
+    └── src
+        ├── main
+        │   └── java 
+        │       └── org.westpac.random.pins
+        │           └── RandomPinGeneration.java
+        │           └── RandomPinGenerator.java
+        └── test
+            └── java 
+                └── org.westpac.random.pins
+                    └── RandomPinGeneratorTest.java
+```
+
 ## Cloning the project
 1. Open **Terminal** for **Linux/macOS** or **CMD** for **Windows**.
 2. **cd** into the desired folder where you intend to clone the repository.
