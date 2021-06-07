@@ -16,6 +16,14 @@ public class RandomPinGenerator implements RandomPinGeneration {
 
     @Override
     public Set<Integer> generateBatchOfUniqueRandomPins(final int minVal, final int maxVal, final int noOfPins) throws IllegalArgumentException {
-        return null;
+        Random random = new Random();
+        //Datatype HashSet is used to ignore duplicates values
+        HashSet<Integer> randomPins = new HashSet<>();
+        //while loop to generate and add pins to the HashMap until the size of the HashSet reaches the desired noOfPins
+        while (randomPins.size() < noOfPins) {
+            Integer pin = minVal + random.nextInt((maxVal - minVal) + 1);
+            randomPins.add(pin);
+        }
+        return randomPins;
     }
 }
