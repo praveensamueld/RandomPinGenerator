@@ -4,6 +4,7 @@
 package org.westpac.random.pins;
 
 import org.testng.annotations.*;
+import java.util.Set;
 import static org.assertj.core.api.Assertions.*;
 
 public class RandomPinGeneratorTest {
@@ -77,5 +78,16 @@ public class RandomPinGeneratorTest {
             assertThat(randomPinGeneration.generateBatchOfUniqueRandomPins(0, 1, 2));
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("The requested 'noOfPins' cannot be greater than probable number of unique pins which can be generated between the supplied 'minVal' and 'maxVal'");
+    }
+
+    @Test
+    public void generatedBatchOfRandomPinsIsGreaterThanOrEqualTo100AndLessThanOrEqualTo200AndTheBatchHas100Pins() {
+        Set<Integer> randomPins = randomPinGeneration.generateBatchOfUniqueRandomPins(100, 200, 100);
+        assertThat(randomPins).hasSize(100);
+        // all elements must satisfy the given assertions
+        assertThat(randomPins).allSatisfy(pins -> {
+            assertThat(pins).isGreaterThanOrEqualTo(100);
+            assertThat(pins).isLessThanOrEqualTo(200);
+        });
     }
 }
