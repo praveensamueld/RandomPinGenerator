@@ -38,7 +38,7 @@ A java library for generating a batch of unique random PINs.
 2. **cd** into the desired folder where you intend to clone the repository.
 3. Run the below command. 
 ```$xslt
-git clone https://github.com/davidmerfield/randomColor.git
+git clone https://github.com/praveensamueld/RandomPinGenerator.git
 ```
 4. **cd** into the parent directory.
 ```$xslt
