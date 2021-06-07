@@ -3,21 +3,32 @@
  */
 package org.westpac.random.pins;
 
-
+import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
+/**
+ * Generates a batch of random unique numbers
+ *
+ * @version 0.1.0
+ */
 public class RandomPinGenerator implements RandomPinGeneration {
     private static final int DEFAULT_NO_OF_PINS = 1000;
     private static final int MAX_VALUE = 9999;
     private static final int MIN_VALUE = 1000;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Set<Integer> generateBatchOfUniqueRandomPins() {
         //Generates a batch of 1000 random unique pins in range 1000 ≤ r ≤ 9999
         return generateBatchOfUniqueRandomPins(MIN_VALUE, MAX_VALUE, DEFAULT_NO_OF_PINS);
     }
 
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Set<Integer> generateBatchOfUniqueRandomPins(final int minVal, final int maxVal, final int noOfPins) throws IllegalArgumentException {
 
@@ -32,6 +43,10 @@ public class RandomPinGenerator implements RandomPinGeneration {
         if (noOfPins > (maxVal - minVal)) {
             throw new IllegalArgumentException("The requested 'noOfPins' cannot be greater than probable number of unique pins which can be generated between the supplied 'minVal' and 'maxVal'");
         }
+
+        /**
+         * https://docs.oracle.com/javase/8/docs/api/java/util/Random.html
+         */
         Random random = new Random();
         //Datatype HashSet is used to ignore duplicates values
         HashSet<Integer> randomPins = new HashSet<>();

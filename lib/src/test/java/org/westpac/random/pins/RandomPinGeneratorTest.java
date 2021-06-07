@@ -7,6 +7,11 @@ import org.testng.annotations.*;
 import java.util.Set;
 import static org.assertj.core.api.Assertions.*;
 
+/**
+ * Unit Tests to verify the methods generateBatchOfUniqueRandomPins() and generateBatchOfUniqueRandomPins(final int minVal, final int maxVal, final int noOfPins)
+ *
+ * @version 0.1.0
+ */
 public class RandomPinGeneratorTest {
 
     private RandomPinGeneration randomPinGeneration;
