@@ -20,6 +20,18 @@ public class RandomPinGenerator implements RandomPinGeneration {
 
     @Override
     public Set<Integer> generateBatchOfUniqueRandomPins(final int minVal, final int maxVal, final int noOfPins) throws IllegalArgumentException {
+
+        if (minVal < 0 || maxVal < 0 || minVal >= maxVal) {
+            throw new IllegalArgumentException("Parameters 'minVal' and 'maxVal' should be non-negative integers and 'maxVal' should be greater than 'minVal'.");
+        }
+
+        if (noOfPins <= 0) {
+            throw new IllegalArgumentException("Parameter 'noOfPins' should be greater than 0.");
+        }
+
+        if (noOfPins > (maxVal - minVal)) {
+            throw new IllegalArgumentException("The requested 'noOfPins' cannot be greater than probable number of unique pins which can be generated between the supplied 'minVal' and 'maxVal'");
+        }
         Random random = new Random();
         //Datatype HashSet is used to ignore duplicates values
         HashSet<Integer> randomPins = new HashSet<>();
