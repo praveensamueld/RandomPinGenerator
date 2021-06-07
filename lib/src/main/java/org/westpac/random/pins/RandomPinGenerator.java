@@ -4,5 +4,18 @@
 package org.westpac.random.pins;
 
 
+import java.util.Set;
+
 public class RandomPinGenerator implements RandomPinGeneration {
+
+    @Override
+    public Set<Integer> generateBatchOfUniqueRandomPins() {
+        return null;
+    }
+
+
+    @Override
+    public Set<Integer> generateBatchOfUniqueRandomPins(final int minVal, final int maxVal, final int noOfPins) throws IllegalArgumentException {
+        return null;
+    }
 }

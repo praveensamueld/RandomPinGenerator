@@ -3,7 +3,39 @@
  */
 package org.westpac.random.pins;
 
+import org.testng.annotations.*;
+import static org.assertj.core.api.Assertions.*;
 
 public class RandomPinGeneratorTest {
 
+    private RandomPinGeneration randomPinGeneration;
+
+    @BeforeSuite
+    public void beforeSuite() {
+        randomPinGeneration = new RandomPinGenerator();
+    }
+
+    @Test
+    public void generatedBatchOfRandomPinsIsNotNull() {
+        assertThat(randomPinGeneration.generateBatchOfUniqueRandomPins()).isNotNull();
+    }
+
+    @Test
+    public void generatedBatchOfRandomPinsIsNotEmpty() {
+        assertThat(randomPinGeneration.generateBatchOfUniqueRandomPins()).isNotEmpty();
+    }
+
+    @Test
+    public void generatedBatchHas1000RandomPins() {
+        assertThat(randomPinGeneration.generateBatchOfUniqueRandomPins()).hasSize(1000);
+    }
+
+    @Test
+    public void generatedBatchOfRandomPinsIsGreaterThanOrEqualTo1000AndLessThanOrEqualTo9999() {
+        // all elements must satisfy the given assertions
+        assertThat(randomPinGeneration.generateBatchOfUniqueRandomPins()).allSatisfy(pins -> {
+            assertThat(pins).isGreaterThanOrEqualTo(1000);
+            assertThat(pins).isLessThanOrEqualTo(9999);
+        });
+    }
 }
