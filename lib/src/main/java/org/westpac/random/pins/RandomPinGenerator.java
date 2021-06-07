@@ -7,10 +7,14 @@ package org.westpac.random.pins;
 import java.util.Set;
 
 public class RandomPinGenerator implements RandomPinGeneration {
+    private static final int DEFAULT_NO_OF_PINS = 1000;
+    private static final int MAX_VALUE = 9999;
+    private static final int MIN_VALUE = 1000;
 
     @Override
     public Set<Integer> generateBatchOfUniqueRandomPins() {
-        return null;
+        //Generates a batch of 1000 random unique pins in range 1000 ≤ r ≤ 9999
+        return generateBatchOfUniqueRandomPins(MIN_VALUE, MAX_VALUE, DEFAULT_NO_OF_PINS);
     }
 
 
